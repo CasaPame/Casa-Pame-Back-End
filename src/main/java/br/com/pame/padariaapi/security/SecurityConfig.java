@@ -10,15 +10,39 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
+    private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
+
+    public SecurityConfig(CustomAuthenticationEntryPoint customAuthenticationEntryPoint,
+                          CustomAccessDeniedHandler customAccessDeniedHandler) {
+        this.customAuthenticationEntryPoint = customAuthenticationEntryPoint;
+        this.customAccessDeniedHandler = customAccessDeniedHandler;
+    }
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // por enquanto tudo exige login (depois a gente abre alguns GET se quiser)
+
+                // ✅ público (front vai consumir sem login)
+                .requestMatchers("/vitrine/**").permitAll()
+                .requestMatchers("/produtos/**").permitAll()
+
+                // ✅ somente ADMIN
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+
+                // ✅ pedidos: qualquer usuário logado (CLIENTE ou ADMIN)
+                .requestMatchers("/pedidos/**").authenticated()
+
+                // ✅ o resto: por segurança, exige login
                 .anyRequest().authenticated()
             )
-            .httpBasic(basic -> {});
+            .httpBasic(basic -> {})
+            .exceptionHandling(ex -> ex
+                .authenticationEntryPoint(customAuthenticationEntryPoint) // 401
+                .accessDeniedHandler(customAccessDeniedHandler)           // 403
+            );
 
         return http.build();
     }
