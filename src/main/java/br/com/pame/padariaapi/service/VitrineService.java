@@ -34,9 +34,9 @@ public class VitrineService {
         this.authService = authService;
     }
 
-    // público (cliente logado)
+    // ✅ público (sem login). Se tiver login, filtra preço; se não, assume B2C.
     public Page<VitrineItemResponseDTO> listarFavoritos(Pageable pageable) {
-        Cliente cliente = authService.getClienteLogado();
+        Cliente cliente = authService.getClienteLogadoSeExistir(); // <-- AQUI
         return vitrineItemRepository.findByAtivoTrue(pageable)
                 .map(item -> toDTO(item, cliente));
     }
@@ -47,7 +47,6 @@ public class VitrineService {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
                         "Variação não encontrada: " + request.getProdutoVariacaoId()));
 
-        // evita duplicar vitrine_item pra mesma variação
         if (vitrineItemRepository.existsByProdutoVariacao_Id(variacao.getId())) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "Esta variação já está na vitrine: " + variacao.getId());
@@ -60,8 +59,7 @@ public class VitrineService {
 
         VitrineItem salvo = vitrineItemRepository.save(item);
 
-        // para resposta, usamos preço B2C por padrão (admin)
-        return toDTO(salvo, null);
+        return toDTO(salvo, null); // admin -> assume B2C no retorno
     }
 
     // admin - atualizar
@@ -78,7 +76,7 @@ public class VitrineService {
         return toDTO(salvo, null);
     }
 
-    // admin - remover (DELETE)
+    // admin - remover
     public void remover(Long id) {
         VitrineItem item = vitrineItemRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -90,9 +88,7 @@ public class VitrineService {
     private VitrineItemResponseDTO toDTO(VitrineItem item, Cliente cliente) {
         ProdutoVariacao v = item.getProdutoVariacao();
 
-        // Se vier cliente, filtra preço (público). Se não vier, assume B2C (admin).
         boolean isB2b = (cliente != null && cliente.getTipoCliente() == TipoCliente.B2B);
-
         BigDecimal preco = isB2b ? v.getPrecoB2b() : v.getPrecoB2c();
 
         Long produtoId = (v.getProduto() != null ? v.getProduto().getId() : null);

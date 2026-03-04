@@ -2,6 +2,7 @@ package br.com.pame.padariaapi.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,24 +25,24 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-
-                // ✅ público (front vai consumir sem login)
+                // ✅ público
                 .requestMatchers("/vitrine/**").permitAll()
                 .requestMatchers("/produtos/**").permitAll()
 
-                // ✅ somente ADMIN
+                // ✅ admin
                 .requestMatchers("/admin/**").hasRole("ADMIN")
 
-                // ✅ pedidos: qualquer usuário logado (CLIENTE ou ADMIN)
+                // ✅ precisa login
                 .requestMatchers("/pedidos/**").authenticated()
 
-                // ✅ o resto: por segurança, exige login
+                // resto exige login
                 .anyRequest().authenticated()
             )
-            .httpBasic(basic -> {})
+            .httpBasic(Customizer.withDefaults())
+            .anonymous(Customizer.withDefaults())
             .exceptionHandling(ex -> ex
-                .authenticationEntryPoint(customAuthenticationEntryPoint) // 401
-                .accessDeniedHandler(customAccessDeniedHandler)           // 403
+                .authenticationEntryPoint(customAuthenticationEntryPoint)
+                .accessDeniedHandler(customAccessDeniedHandler)
             );
 
         return http.build();
