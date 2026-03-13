@@ -16,7 +16,7 @@ public class VitrineController {
 
     public VitrineController(VitrineService vitrineService) {
         this.vitrineService = vitrineService;
-    }
+    } 
 
     @GetMapping("/favoritos")
     public Page<VitrineItemResponseDTO> listarFavoritos(

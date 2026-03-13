@@ -11,4 +11,4 @@ public interface VitrineItemRepository extends JpaRepository<VitrineItem, Long> 
     Page<VitrineItem> findByAtivoTrue(Pageable pageable);
 
     boolean existsByProdutoVariacao_Id(Long produtoVariacaoId);
-}
+} 

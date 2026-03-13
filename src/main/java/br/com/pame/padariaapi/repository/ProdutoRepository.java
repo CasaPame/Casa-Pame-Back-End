@@ -25,4 +25,4 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
             @Param("categoriaId") Long categoriaId,
             @Param("ativo") Boolean ativo
     );
-}
+} 

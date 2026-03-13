@@ -19,7 +19,7 @@ public class ClienteDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Cliente cliente = clienteRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Cliente não encontrado"));
-
+ 
         // Banco: ADMIN / CLIENTE
         // Spring: hasRole("ADMIN") espera ROLE_ADMIN (o .roles("ADMIN") já adiciona ROLE_)
         String role = (cliente.getRole() != null) ? cliente.getRole().name() : "CLIENTE";

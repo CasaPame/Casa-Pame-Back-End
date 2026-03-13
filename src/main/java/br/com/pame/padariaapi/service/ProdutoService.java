@@ -29,7 +29,7 @@ public class ProdutoService {
         this.variacaoRepository = variacaoRepository;
         this.authService = authService;
     }
-
+ 
     public List<ProdutoResponseDTO> listar() {
         Cliente cliente = authService.getClienteLogado();
 

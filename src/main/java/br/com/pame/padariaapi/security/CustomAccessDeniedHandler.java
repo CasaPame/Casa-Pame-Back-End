@@ -31,5 +31,5 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                 """.formatted(LocalDateTime.now());
 
         response.getWriter().write(body);
-    }
+    } 
 }

@@ -20,7 +20,7 @@ public class AdminProdutoController {
         this.produtoAdminService = produtoAdminService;
     }
 
-    @PostMapping
+    @PostMapping 
     public AdminProdutoResponseDTO criar(@Valid @RequestBody ProdutoCreateRequestDTO request) {
         return produtoAdminService.criar(request);
     }

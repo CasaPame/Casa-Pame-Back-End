@@ -6,7 +6,7 @@ public class AdminProdutoResponseDTO {
     private String nome;
     private String sku;
     private String tipoVenda;
-    private Long categoriaId;
+    private Long categoriaId; 
     private String categoriaNome;
     private Boolean ativo;
 

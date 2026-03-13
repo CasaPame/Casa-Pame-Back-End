@@ -6,7 +6,7 @@ public class ProdutoVariacaoResponseDTO {
 
     private Long id;
     private String descricao;
-    private Integer pesoGramas;
+    private Integer pesoGramas; 
     private BigDecimal preco; // <- preço já filtrado pelo login
 
     public ProdutoVariacaoResponseDTO(Long id, String descricao, Integer pesoGramas, BigDecimal preco) {

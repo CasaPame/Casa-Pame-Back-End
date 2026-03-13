@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotEmpty;
 public class PedidoCreateRequestDTO {
 
     @NotEmpty(message = "Pedido deve ter ao menos 1 item")
-    @Valid
+    @Valid 
     private List<PedidoItemRequestDTO> itens;
 
     public PedidoCreateRequestDTO() {}

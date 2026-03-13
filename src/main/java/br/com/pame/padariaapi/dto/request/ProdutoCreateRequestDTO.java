@@ -7,7 +7,7 @@ import jakarta.validation.constraints.NotNull;
 public class ProdutoCreateRequestDTO {
 
     @NotBlank(message = "nome é obrigatório")
-    private String nome;
+    private String nome; 
 
     @NotBlank(message = "sku é obrigatório")
     private String sku;

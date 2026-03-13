@@ -6,7 +6,7 @@ public class PedidoItemResponseDTO {
 
     private Long id;
     private Long produtoVariacaoId;
-    private String descricao;
+    private String descricao; 
     private Integer quantidade;
     private BigDecimal precoUnitario;
     private BigDecimal subtotal;

@@ -23,7 +23,7 @@ public class PedidoController {
     public PedidoResponseDTO criar(@Valid @RequestBody PedidoCreateRequestDTO request) {
         return pedidoService.criar(request);
     }
-
+ 
     @GetMapping
     public List<PedidoResponseDTO> listar() {
         return pedidoService.listarDoClienteLogado();

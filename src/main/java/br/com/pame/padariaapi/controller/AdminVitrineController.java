@@ -19,7 +19,7 @@ public class AdminVitrineController {
         this.vitrineService = vitrineService;
     }
 
-    @PostMapping("/favoritos")
+    @PostMapping("/favoritos") 
     public VitrineItemResponseDTO criar(@Valid @RequestBody VitrineItemCreateRequestDTO request) {
         return vitrineService.criar(request);
     }

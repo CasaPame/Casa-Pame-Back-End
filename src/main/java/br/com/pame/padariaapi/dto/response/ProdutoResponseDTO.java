@@ -7,7 +7,7 @@ public class ProdutoResponseDTO {
     private Long id;
     private String nome;
     private String sku;
-    private String tipoVenda;
+    private String tipoVenda; 
 
     private Long categoriaId;
     private String categoriaNome;

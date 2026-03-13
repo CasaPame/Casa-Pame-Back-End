@@ -116,7 +116,7 @@ public class PedidoService {
         }
 
         return toResponseDTO(pedido);
-    }
+    } 
 
     private PedidoResponseDTO toResponseDTO(Pedido pedido) {
         List<PedidoItemResponseDTO> itensResp = new ArrayList<>();

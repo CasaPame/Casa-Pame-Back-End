@@ -24,7 +24,7 @@ public class ProdutoAdminService {
                                CategoriaRepository categoriaRepository) {
         this.produtoRepository = produtoRepository;
         this.categoriaRepository = categoriaRepository;
-    }
+    } 
 
     public AdminProdutoResponseDTO criar(ProdutoCreateRequestDTO request) {
         String sku = request.getSku().trim();

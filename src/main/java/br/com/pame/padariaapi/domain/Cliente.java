@@ -13,7 +13,7 @@ public class Cliente {
     @Column(nullable=false, unique=true)
     private String email;
 
-    @Column(nullable=false)
+    @Column(nullable=false) 
     private String senha; // BCrypt
 
     @Enumerated(EnumType.STRING)

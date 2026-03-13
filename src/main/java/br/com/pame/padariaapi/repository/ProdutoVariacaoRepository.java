@@ -6,4 +6,4 @@ import java.util.List;
 
 public interface ProdutoVariacaoRepository extends JpaRepository<ProdutoVariacao, Long> {
     List<ProdutoVariacao> findByProdutoId(Long produtoId);
-}
+} 

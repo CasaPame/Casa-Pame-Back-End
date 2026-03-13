@@ -22,7 +22,7 @@ public class ProdutoController {
     @GetMapping("/produtos")
     public List<ProdutoResponseDTO> listar() {
         return produtoService.listar();
-    }
+    } 
 
     @GetMapping("/produtos/{id}/variacoes")
     public List<ProdutoVariacaoResponseDTO> listarVariacoes(@PathVariable Long id) {

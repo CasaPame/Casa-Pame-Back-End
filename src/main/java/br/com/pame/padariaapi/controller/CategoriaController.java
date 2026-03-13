@@ -20,4 +20,4 @@ public class CategoriaController {
     public List<Categoria> listar() {
         return service.listarTodas();
     }
-}
+} 

@@ -13,8 +13,8 @@ public class Produto {
     private Long id;
 
     @Column(nullable = false, length = 150)
-    private String nome;
-
+    private String nome; 
+    
     @Column(nullable = false, length = 50, unique = true)
     private String sku;
 

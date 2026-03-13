@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "vitrine_item")
 public class VitrineItem {
-
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

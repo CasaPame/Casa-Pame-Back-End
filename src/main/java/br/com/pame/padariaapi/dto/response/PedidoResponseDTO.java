@@ -9,7 +9,7 @@ public class PedidoResponseDTO {
     private Long id;
     private Long clienteId;
     private String clienteEmail;
-    private String tipoCliente;
+    private String tipoCliente; 
     private LocalDateTime criadoEm;
     private BigDecimal total;
     private List<PedidoItemResponseDTO> itens;

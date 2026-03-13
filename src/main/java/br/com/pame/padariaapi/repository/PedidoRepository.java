@@ -9,4 +9,4 @@ import br.com.pame.padariaapi.domain.Pedido;
 public interface PedidoRepository extends JpaRepository<Pedido, Long> {
 
     List<Pedido> findByClienteIdOrderByIdDesc(Long clienteId);
-}
+} 

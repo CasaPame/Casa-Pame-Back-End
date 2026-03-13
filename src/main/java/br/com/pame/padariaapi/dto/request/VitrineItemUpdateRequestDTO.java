@@ -7,7 +7,7 @@ public class VitrineItemUpdateRequestDTO {
 
     @NotNull(message = "ordem é obrigatória")
     @Min(value = 0, message = "ordem deve ser >= 0")
-    private Integer ordem;
+    private Integer ordem; 
 
     @NotNull(message = "ativo é obrigatório")
     private Boolean ativo;

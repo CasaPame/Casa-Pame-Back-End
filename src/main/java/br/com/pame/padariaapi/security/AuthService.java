@@ -18,7 +18,7 @@ public class AuthService {
     public AuthService(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
-
+ 
     // Para endpoints que EXIGEM login
     public Cliente getClienteLogado() {
         Cliente cliente = getClienteLogadoSeExistir();

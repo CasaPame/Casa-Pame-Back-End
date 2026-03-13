@@ -16,7 +16,7 @@ public class ApiExceptionHandler {
 
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<Object> handleResponseStatusException(ResponseStatusException ex) {
-
+ 
         Map<String, Object> body = new HashMap<>();
         body.put("dataHora", LocalDateTime.now());
         body.put("status", ex.getStatusCode().value());

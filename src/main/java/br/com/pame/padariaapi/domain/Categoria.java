@@ -13,7 +13,7 @@ public class Categoria {
     @Column(nullable = false, length = 100)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(nullable = false) 
     private Boolean ativo = true;
 
     public Categoria() {}

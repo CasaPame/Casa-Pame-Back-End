@@ -31,5 +31,5 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
                 """.formatted(LocalDateTime.now());
 
         response.getWriter().write(body);
-    }
+    } 
 }

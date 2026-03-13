@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class VitrineItemResponseDTO {
 
     private Long vitrineItemId;
-    private Integer ordem;
+    private Integer ordem; 
 
     private Long produtoId;
     private String produtoNome;

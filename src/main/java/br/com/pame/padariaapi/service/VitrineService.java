@@ -39,7 +39,7 @@ public class VitrineService {
         Cliente cliente = authService.getClienteLogadoSeExistir(); // <-- AQUI
         return vitrineItemRepository.findByAtivoTrue(pageable)
                 .map(item -> toDTO(item, cliente));
-    }
+    } 
 
     // admin - criar item
     public VitrineItemResponseDTO criar(VitrineItemCreateRequestDTO request) {

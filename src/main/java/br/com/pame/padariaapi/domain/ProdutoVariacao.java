@@ -12,7 +12,7 @@ public class ProdutoVariacao {
     private Long id;
 
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "produto_id")
+    @JoinColumn(name = "produto_id") 
     private Produto produto;
 
     @Column(nullable = false, length = 120)

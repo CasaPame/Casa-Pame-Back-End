@@ -18,4 +18,4 @@ public class CategoriaService {
     public List<Categoria> listarTodas() {
         return repository.findAll();
     }
-}
+} 
