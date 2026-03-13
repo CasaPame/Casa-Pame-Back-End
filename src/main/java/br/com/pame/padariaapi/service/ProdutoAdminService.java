@@ -41,7 +41,7 @@ public class ProdutoAdminService {
         Produto p = new Produto();
         p.setNome(request.getNome().trim());
         p.setSku(sku);
-        p.setCategoria(categoria);
+        p.setCategoria(categoria); 
         p.setTipoVenda(request.getTipoVenda()); // ✅ agora é enum
         p.setAtivo(request.getAtivo() != null ? request.getAtivo() : true);
 
